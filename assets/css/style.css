@@ -1,0 +1,44 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box
+}
+
+body {
+    background-color: rgb(35, 35, 43);
+}
+
+h1 {
+    color: rgb(46, 181, 249);
+    display: flex;
+    justify-content: center;
+}
+
+.d-none{
+    display: none;
+}
+.wrap {
+    max-width: 600px;
+    margin: 4rem auto;
+}
+
+.field {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.3rem;
+}
+
+.cell {
+    width: calc(100% / 11);
+    aspect-ratio: 1 / 1;
+    border: 1px dashed palegoldenrod;
+    color: palegoldenrod;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+}
+
+.bg-sky {
+    background-color: rgb(46, 181, 249);
+}
