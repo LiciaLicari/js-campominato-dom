@@ -37,10 +37,10 @@ if (easyMatchEl) {
         function spawnField(domEl, limit) {
             //creo il campo
     
-            for (let i = 0; i <= limit; i++) {
+            for (let i = 0; i < limit; i++) {
                 const cellEl = document.createElement("div");
                 cellEl.classList = "cell";
-                cellEl.innerHTML = i;
+                cellEl.innerHTML = i + 1;
                 fieldEl.append(cellEl);
     
                 //- emetto un messaggio in console con il numero della cella cliccata.
@@ -65,10 +65,10 @@ if (easyMatchEl) {
         function spawnField(domEl, midLimit) {
             //creo il campo
     
-            for (let i = 0; i <= midLimit; i++) {
+            for (let i = 0; i < midLimit; i++) {
                 const cellMid_El = document.createElement("div");
                 cellMid_El.classList = "cell_mid";
-                cellMid_El.innerHTML = i;
+                cellMid_El.innerHTML = i + 1;
                 fieldEl.append(cellMid_El);
     
                 //- emetto un messaggio in console con il numero della cella cliccata.
@@ -93,10 +93,10 @@ if (easyMatchEl) {
         function spawnField(domEl, hardLimit) {
             //creo il campo
     
-            for (let i = 0; i <= hardLimit; i++) {
+            for (let i = 0; i < hardLimit; i++) {
                 const cellHard_El = document.createElement("div");
                 cellHard_El.classList = "cell_hard";
-                cellHard_El.innerHTML = i;
+                cellHard_El.innerHTML = i + 1;
                 fieldEl.append(cellHard_El);
     
                 //- emetto un messaggio in console con il numero della cella cliccata.
