@@ -18,6 +18,18 @@ const bodyEl = document.querySelector("body");
 const fieldEl = document.querySelector(".field");
 //const limit = 100; // numero delle celle
 
+/* 
+- Aggiungere una select accanto al bottone di generazione, 
+che fornisca una scelta tra tre diversi livelli di difficoltà:
+- difficoltà 1 easy ⇒ 100 caselle, con un numero compreso tra 1 e 100, 
+divise in 10 caselle per 10 righe;
+
+- difficoltà 2 med ⇒ 81 caselle, con un numero compreso tra 1 e 81, 
+divise in 9 caselle per 9 righe;
+
+- difficoltà 3 hard ⇒ 49 caselle, con un numero compreso tra 1 e 49, 
+divise in 7 caselle per 7 righe; */
+
 let cellNumber;
 const bombNumber = 16;
 
@@ -36,18 +48,30 @@ document.querySelector('button').addEventListener('click', function () {
 const clickButton = document.querySelector('.spawn');
 
 
+
+
 function spawnField(domEl, CellNumber, bombList) {
     //creo il campo
+    let gameOver = false;
+    const outcomeEl = document.querySelector("")
+
+
 
     for (let i = 0; i < CellNumber; i++) {
         const cellEl = document.createElement("div");
-        cellEl.classList = "cell";
+        cellEl.classList.add("cell");
         cellEl.style.width = `calc(100% / ${Math.sqrt(cellNumber)})`;
         cellEl.innerHTML = i + 1;
         fieldEl.append(cellEl);
 
         //- emetto un messaggio in console con il numero della cella cliccata.
         cellEl.addEventListener("click", function () {
+            if 
+
+
+
+
+
 
             console.log("Click on cell: ", cellEl);
             // - Quando l'utente clicca su ogni cella, la cella cliccata si colora di azzurro 
@@ -64,6 +88,10 @@ clickButton.addEventListener('click', function () {
     
     spawnField(fieldEl, cellNumber);
 })
+
+
+
+
 
 
 // - Il computer deve generare 16 numeri casuali nello stesso range della difficoltà prescelta:
@@ -109,17 +137,9 @@ cliccare sulle altre celle.
 l’utente ha cliccato su una cella che non era una bomba.
 BONUS:
 
-- Aggiungere una select accanto al bottone di generazione, 
-che fornisca una scelta tra tre diversi livelli di difficoltà:
 
-- difficoltà 1 easy ⇒ 100 caselle, con un numero compreso tra 1 e 100, 
-divise in 10 caselle per 10 righe;
 
-- difficoltà 2 med ⇒ 81 caselle, con un numero compreso tra 1 e 81, 
-divise in 9 caselle per 9 righe;
 
-- difficoltà 3 hard ⇒ 49 caselle, con un numero compreso tra 1 e 49, 
-divise in 7 caselle per 7 righe;
 
 Consigli del giorno: 
 Scriviamo prima cosa vogliamo fare passo passo in italiano, 
