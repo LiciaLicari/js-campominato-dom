@@ -53,9 +53,8 @@ const clickButton = document.querySelector('.spawn');
 function spawnField(domEl, CellNumber, bombList) {
     //creo il campo
     let gameOver = false;
-    const outcomeEl = document.querySelector("")
-
-
+    const outcomeEl = document.querySelector("outcome");
+    
 
     for (let i = 0; i < CellNumber; i++) {
         const cellEl = document.createElement("div");
@@ -66,16 +65,23 @@ function spawnField(domEl, CellNumber, bombList) {
 
         //- emetto un messaggio in console con il numero della cella cliccata.
         cellEl.addEventListener("click", function () {
-            if 
+            if  //perdo
+            {
 
 
+            } else {
 
+
+            }
 
 
 
             console.log("Click on cell: ", cellEl);
             // - Quando l'utente clicca su ogni cella, la cella cliccata si colora di azzurro 
             cellEl.classList.add("bg-sky");
+
+
+
         })
 
 
