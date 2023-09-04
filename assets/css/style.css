@@ -21,7 +21,7 @@ label {
     padding-right: 10px;
   }
   
-  select {
+  select , button {
     font-size: 0.9rem;
     padding: 2px 5px;
   }
@@ -43,6 +43,28 @@ label {
 
 .cell {
     width: calc(100% / 11);
+    aspect-ratio: 1 / 1;
+    border: 1px dashed palegoldenrod;
+    color: palegoldenrod;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+}
+
+.cell_mid {
+    width: calc(100% / 10);
+    aspect-ratio: 1 / 1;
+    border: 1px dashed palegoldenrod;
+    color: palegoldenrod;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+}
+
+.cell_hard {
+    width: calc(100% / 8);
     aspect-ratio: 1 / 1;
     border: 1px dashed palegoldenrod;
     color: palegoldenrod;
