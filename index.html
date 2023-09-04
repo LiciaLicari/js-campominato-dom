@@ -1,21 +1,35 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./assets/css/style.css">
-    
+
     <title>Campo minato</title>
 </head>
+
 <body>
     <h1>Minefield</h1>
+    <label for="difficulty_level_select">Difficulty level:</label>
+
+    <select name="levels" id="difficulty_level_select">
+        <option value="">--Please choose an option--</option>
+        <option value="easy">easy-peasy</option>
+        <option value="mid">you'll manage...maybe</option>
+        <option value="hard">you'll need a helmet</option>
+        
+    </select>
+
+    </select>
     <button class="spawn">Spawn your field!</button>
     <div class="wrap">
         <div class="field">
 
         </div>
     </div>
-    
+
     <script type="text/javascript" src="./assets/js/script.js"></script>
 </body>
+
 </html>
