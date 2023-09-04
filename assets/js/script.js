@@ -29,7 +29,7 @@ document.querySelector('button').addEventListener('click', function () {
     const bombList = bomb(bombNumber);
     console.log(bombList);
 
-    
+    spawnField(fieldEl, cellNumber, bombList);
 });
 
 //richiamo il pulsante
@@ -42,11 +42,13 @@ function spawnField(domEl, CellNumber, bombList) {
     for (let i = 0; i < CellNumber; i++) {
         const cellEl = document.createElement("div");
         cellEl.classList = "cell";
+        cellEl.style.width = `calc(100% / ${Math.sqrt(cellNumber)})`;
         cellEl.innerHTML = i + 1;
         fieldEl.append(cellEl);
 
         //- emetto un messaggio in console con il numero della cella cliccata.
         cellEl.addEventListener("click", function () {
+
             console.log("Click on cell: ", cellEl);
             // - Quando l'utente clicca su ogni cella, la cella cliccata si colora di azzurro 
             cellEl.classList.add("bg-sky");
@@ -64,9 +66,26 @@ clickButton.addEventListener('click', function () {
 })
 
 
+// - Il computer deve generare 16 numeri casuali nello stesso range della difficoltà prescelta:
+//  le bombe. Attenzione: **nella stessa cella può essere posizionata al massimo una bomba, 
+//  perciò nell’array delle bombe non potranno esserci due numeri uguali.
 
+function bombGenerator(numBomb) {
 
+    const bombList = [];
+    let randomNumber;
+    let i = 0;
 
+    while (i < numBomb) {
+        randomNumber = Math.ceil(Math.random() * cellNumber);
+        if (!bombList.includes(randomNumber)) {
+            bombList[i] = randomNumber;
+            i++;
+        }
+    }
+
+    return bombList;
+}
    
 
 
@@ -74,9 +93,7 @@ clickButton.addEventListener('click', function () {
 /* 
 Consegna
 
-- Il computer deve generare 16 numeri casuali nello stesso range della difficoltà prescelta:
- le bombe. Attenzione: **nella stessa cella può essere posizionata al massimo una bomba, 
- perciò nell’array delle bombe non potranno esserci due numeri uguali.
+
 
 - In seguito l'utente clicca su una cella: 
 se il numero è presente nella lista dei numeri generati - abbiamo calpestato una bomba - 
