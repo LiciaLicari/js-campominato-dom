@@ -19,23 +19,27 @@ const fieldEl = document.querySelector(".field");
 //const limit = 100; // numero delle celle
 
 let cellNumber;
-
+const bombNumber = 16;
 
 document.querySelector('button').addEventListener('click', function () {
     fieldEl.innerHTML = '';
     cellNumber = Number(document.querySelector('#difficulty_level_select').value);
 
-    spawnField(fieldEl, cellNumber);
+
+    const bombList = bomb(bombNumber);
+    console.log(bombList);
+
+    
 });
 
 //richiamo il pulsante
 const clickButton = document.querySelector('.spawn');
 
 
-function spawnField(domEl, limit) {
+function spawnField(domEl, CellNumber, bombList) {
     //creo il campo
 
-    for (let i = 0; i < limit; i++) {
+    for (let i = 0; i < CellNumber; i++) {
         const cellEl = document.createElement("div");
         cellEl.classList = "cell";
         cellEl.innerHTML = i + 1;
