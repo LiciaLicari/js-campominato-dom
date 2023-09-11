@@ -11,23 +11,40 @@
 
 <body>
     <h1>Minefield</h1>
-    <label for="difficulty_level_select">Difficulty level:</label>
+    <main>
 
-    <select name="levels" id="difficulty_level_select">
-        <option value="">--Please choose an option--</option>
-        <option id="easy" value="100">easy-peasy</option>
-        <option id="mid" value="81">you'll manage...maybe</option>
-        <option id="hard" value="49">you'll need a helmet</option>
-        
-    </select>
-    <div class="outcome"></div>
+        <div class="container">
+            <div class="row">
+                <div class="col-6 m-auto d-flex justify-content-between align-items-center">
+                    <form action="" id="spawnField">
+                        <select name="levels" id="difficulty_level_select">
+                            <option value="">--Please choose an option--</option>
+                            <option id="easy" value="100">easy-peasy</option>
+                            <option id="mid" value="81">you'll manage...maybe</option>
+                            <option id="hard" value="49">you'll need a helmet</option>
+                        </select>
+                        <input type="submit" value="Spawn your field">
+                    </form>
+                        <h1>Your score</h1>
+                        <h2 id="score"></h2>
+                    
+                    <div>
+                        <button id="reload">Try again</button>
+                    </div>
+                </div>
+            </div>
 
-    </select>
-    <button class="spawn">Spawn your field!</button>
-    <div class="wrap">
-        <div class="field">
         </div>
-    </div>
+        <div class="container">
+            <div class="field d-flex flex-wrap position-relative">
+                <div class="position-absolute  d-none bg-danger w-100 h-100 d-flex justify-content-center align-items-center"
+                    id="gameOver">
+                    <h1 class="text-white text-uppercase">You lose!</h1>
+                </div>
+            </div>
+        </div>
+
+    </main>
 
     <script type="text/javascript" src="./assets/js/script.js"></script>
 </body>

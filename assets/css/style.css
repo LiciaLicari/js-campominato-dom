@@ -8,41 +8,14 @@ body {
     background-color: rgb(35, 35, 43);
 }
 
-h1 {
+h1, h2 {
     color: rgb(46, 181, 249);
     display: flex;
     justify-content: center;
 }
 
-label {
-    font-family: sans-serif;
-    font-size: 1rem;
-    color: blanchedalmond;
-    padding-right: 10px;
-  }
-  
-  select , button {
-    font-size: 0.9rem;
-    padding: 2px 5px;
-  }
-  
-
-.d-none{
-    display: none;
-}
-.wrap {
-    max-width: 600px;
-    margin: 4rem auto;
-}
-
-.field {
-    display: flex;
-    flex-wrap: wrap;
-   /* gap: 0.3rem; */
-}
-
 .cell {
-    /*  width: calc(100% / 10); */
+    width: calc(100% / 10); 
     aspect-ratio: 1 / 1;
     border: 1px dashed palegoldenrod;
     font-weight: bold;
@@ -54,9 +27,6 @@ label {
 
 }
 
-
-
-
-.bg-sky {
-    background-color: rgb(46, 181, 249);
+.bg-safe {
+    background-color: darkslateblue;
 }

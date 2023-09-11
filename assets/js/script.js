@@ -1,161 +1,125 @@
-//console.log("miao");
+console.log("miao");
 
-//variabili per le opzioni di gioco
-const selectMatchEl = document.getElementById('difficulty_level_select');
-const easyMatchEl = document.getElementById('easy');
-const midMatchEl = document.getElementById('mid');
-const hardMatchEl = document.getElementById('hard');
-console.log(selectMatchEl, easyMatchEl, midMatchEl, hardMatchEl);
+function spawnField(elementDOM, cellNumber) {
 
-/*
-Consegna
-- L'utente clicca su un bottone che genererà una griglia di gioco quadrata.
-*/
+    const bombsList = bombGenerator(cellNumber);
 
+    let playerPoints = 0;
 
-// - Ogni cella ha un numero progressivo, da 1 a 100 (Ci saranno quindi 10 caselle per ognuna delle 10 righe)
-const bodyEl = document.querySelector("body");
-const fieldEl = document.querySelector(".field");
-//const limit = 100; // numero delle celle
+    let i = 0;
 
-/* 
-- Aggiungere una select accanto al bottone di generazione, 
-che fornisca una scelta tra tre diversi livelli di difficoltà:
-- difficoltà 1 easy ⇒ 100 caselle, con un numero compreso tra 1 e 100, 
-divise in 10 caselle per 10 righe;
+    while (i < cellNumber) {
 
-- difficoltà 2 med ⇒ 81 caselle, con un numero compreso tra 1 e 81, 
-divise in 9 caselle per 9 righe;
+        const cellMarkup = `<div class="cell">${i + 1}</div>`;
 
-- difficoltà 3 hard ⇒ 49 caselle, con un numero compreso tra 1 e 49, 
-divise in 7 caselle per 7 righe; */
+        const cellDOM = document.createElement('div');
 
-let cellNumber;
-const bombNumber = 16;
+        const cellTag = document.createElement('h1');
 
-document.querySelector('button').addEventListener('click', function () {
-    fieldEl.innerHTML = '';
-    cellNumber = Number(document.querySelector('#difficulty_level_select').value);
+        const cellValue = i + 1;
 
+        cellTag.append(cellValue);
 
-    const bombList = bomb(bombNumber);
-    console.log(bombList);
+        cellDOM.append(cellTag);
 
-    spawnField(fieldEl, cellNumber, bombList);
-});
+        cellDOM.classList.add('cell');
+        cellDOM.style.width = `calc( 100% / ${Math.sqrt(cellNumber)})`;
+        cellDOM.setAttribute('id',`cell${i}`);
+        
+        cellTag.classList.add('d-none');
 
-//richiamo il pulsante
-const clickButton = document.querySelector('.spawn');
+        elementDOM.append(cellDOM);
+
+        i++;
+        
+        cellDOM.addEventListener('click', function Event () {
+
+            console.log(cellValue);
 
 
+            if (bombsList.includes(cellValue)) {
 
+                this.classList.add('bg-danger');
 
-function spawnField(domEl, CellNumber, bombList) {
-    //creo il campo
-    let gameOver = false;
-    const outcomeEl = document.querySelector("outcome");
-    
+                document.getElementById('score').innerHTML = `You lose! You score is: ${playerPoints} points`;
 
-    for (let i = 0; i < CellNumber; i++) {
-        const cellEl = document.createElement("div");
-        cellEl.classList.add("cell");
-        cellEl.style.width = `calc(100% / ${Math.sqrt(cellNumber)})`;
-        cellEl.innerHTML = i + 1;
-        fieldEl.append(cellEl);
+                this.removeEventListener('click', Event );
+                
 
-        //- emetto un messaggio in console con il numero della cella cliccata.
-        cellEl.addEventListener("click", function () {
-            if  //perdo
-            {
+                document.getElementById('gameOver').classList.remove('d-none');
+                document.getElementById('gameOver').classList.add('d-block');
 
+                document.querySelector
 
             } else {
 
+                this.classList.add('bg-safe');
+
+                this.removeEventListener('click', Event);
+
+                ++playerPoints;
+                
+                document.getElementById('score').innerHTML = playerPoints;
 
             }
 
-
-
-            console.log("Click on cell: ", cellEl);
-            // - Quando l'utente clicca su ogni cella, la cella cliccata si colora di azzurro 
-            cellEl.classList.add("bg-sky");
-
-
-
         })
-
-
     }
 
 }
 
-clickButton.addEventListener('click', function () {
-    clickButton.classList.toggle('d-none');
+    //bomb generator
+
+    function bombGenerator(cellNumber) {
+
+        const bombNumber = 16;
+        const bombsList = [];
     
-    spawnField(fieldEl, cellNumber);
-})
+        for (let i = 0; i < bombNumber; i++) {
+    
+            const bombCell = Math.floor(Math.random() * (cellNumber + 1));
 
-
-
-
-
-
-// - Il computer deve generare 16 numeri casuali nello stesso range della difficoltà prescelta:
-//  le bombe. Attenzione: **nella stessa cella può essere posizionata al massimo una bomba, 
-//  perciò nell’array delle bombe non potranno esserci due numeri uguali.
-
-function bombGenerator(numBomb) {
-
-    const bombList = [];
-    let randomNumber;
-    let i = 0;
-
-    while (i < numBomb) {
-        randomNumber = Math.ceil(Math.random() * cellNumber);
-        if (!bombList.includes(randomNumber)) {
-            bombList[i] = randomNumber;
-            i++;
+            if (bombsList.includes(bombCell)) {
+                i--;
+            } else {
+                bombsList.push(bombCell);
+            }
         }
+    
+        return bombsList;
+    
     }
 
-    return bombList;
-}
-   
+    //field generator
+
+    document.getElementById('spawnField').addEventListener('submit', function (e) {
+        e.preventDefault();
+
+        const fieldEl = document.querySelector('.field');
+
+        const difficultEl = document.getElementById('difficulty_level_select');
+
+        console.log(difficultEl.value);
+
+        if (difficultEl.value === 'easy') {
+
+            spawnField(fieldEl, 100);
+
+        } else if (difficultEl.value === 'mid') {
+
+            spawnField(fieldEl, 81);
+
+        } else if (difficultEl.value === 'hard') {
+
+            spawnField(fieldEl, 49);
+
+        }
+
+
+    })
 
 
 
-/* 
-Consegna
-
-
-
-- In seguito l'utente clicca su una cella: 
-se il numero è presente nella lista dei numeri generati - abbiamo calpestato una bomba - 
-la cella si colora di rosso e la partita termina.
-
-Altrimenti la cella cliccata si colora di azzurro e l'utente può continuare a 
-cliccare sulle altre celle.
-
-- La partita termina quando il giocatore clicca su una bomba o quando raggiunge il numero massimo
- possibile di numeri consentiti (ovvero quando ha rivelato tutte le celle che non sono bombe).
-
-- Al termine della partita il software deve comunicare il punteggio, cioè il numero di volte che 
-l’utente ha cliccato su una cella che non era una bomba.
-BONUS:
-
-
-
-
-
-Consigli del giorno: 
-Scriviamo prima cosa vogliamo fare passo passo in italiano, 
-dividiamo il lavoro in micro problemi.
-pensiamo a queli strumenti ci servono, ad esempio: 
-Di cosa ho bisogno per generare i numeri?
-Proviamo sempre prima con dei console.log() per capire se stiamo ricevendo i dati giusti.
-Eventuali validazioni e i controlli possiamo farli anche in un secondo momento.
-Io sono a vs disposizione via Tickets fino alle 13. Mi raccomando, 
-non sprecate quest'ora e mezza di lavoro ma iniziate subito a lavorare.
-
-*/
-
+    document.getElementById('reload').addEventListener('click', function () {
+        location.reload();
+    })
