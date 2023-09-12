@@ -4,13 +4,21 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./assets/css/style.css">
-
+    
     <title>Campo minato</title>
+    <link
+    href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css"
+    rel="stylesheet"
+    integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT"
+    crossorigin="anonymous">
+    <link rel="stylesheet" href="./assets/css/style.css">
 </head>
 
 <body>
-    <h1>Minefield</h1>
+    <header>
+
+        <h1>Minefield</h1>
+    </header>
     <main>
 
         <div class="container">
@@ -25,8 +33,11 @@
                         </select>
                         <input type="submit" value="Spawn your field">
                     </form>
+                    <div>
+
                         <h1>Your score</h1>
                         <h2 id="score"></h2>
+                    </div>
                     
                     <div>
                         <button id="reload">Try again</button>
@@ -37,7 +48,7 @@
         </div>
         <div class="container">
             <div class="field d-flex flex-wrap position-relative">
-                <div class="position-absolute  d-none bg-danger w-100 h-100 d-flex justify-content-center align-items-center"
+                <div class="position-absolute d-none bg-danger w-100 h-100 d-flex justify-content-center align-items-center"
                     id="gameOver">
                     <h1 class="text-white text-uppercase">You lose!</h1>
                 </div>

@@ -77,12 +77,12 @@ function spawnField(elementDOM, cellNumber) {
     
         for (let i = 0; i < bombNumber; i++) {
     
-            const bombCell = Math.floor(Math.random() * (cellNumber + 1));
+            const bombPosition= Math.floor(Math.random() * (cellNumber + 1));
 
-            if (bombsList.includes(bombCell)) {
+            if (bombsList.includes(bombPosition)) {
                 i--;
             } else {
-                bombsList.push(bombCell);
+                bombsList.push(bombPosition);
             }
         }
     
