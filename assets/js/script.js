@@ -77,9 +77,9 @@ function spawnField(elementDOM, cellNumber) {
     
         for (let i = 0; i < bombNumber; i++) {
     
-            const bombPosition= Math.floor(Math.random() * (cellNumber + 1));
+            const bombPosition= Math.floor((Math.random() * cellNumber) + 1);
 
-            if (bombsList.includes(bombPosition)) {
+            if (bombsList.includes(bombPosition) || bombPosition > 100) {
                 i--;
             } else {
                 bombsList.push(bombPosition);
@@ -101,19 +101,19 @@ function spawnField(elementDOM, cellNumber) {
 
         console.log(difficultEl.value);
 
-        if (difficultEl.value === 'easy') {
+        // if (difficultEl.value === 'easy') {
 
-            spawnField(fieldEl, 100);
+        //     spawnField(fieldEl, 100);
 
-        } else if (difficultEl.value === 'mid') {
+        // } else if (difficultEl.value === 'mid') {
 
-            spawnField(fieldEl, 81);
+        //     spawnField(fieldEl, 81);
 
-        } else if (difficultEl.value === 'hard') {
+        // } else if (difficultEl.value === 'hard') {
 
-            spawnField(fieldEl, 49);
+        //     spawnField(fieldEl, 49);
 
-        }
+        // }
 
 
     })
