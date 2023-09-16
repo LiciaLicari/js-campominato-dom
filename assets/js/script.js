@@ -26,7 +26,7 @@ function spawnField(elementDOM, cellNumber) {
         cellDOM.style.width = `calc( 100% / ${Math.sqrt(cellNumber)})`;
         cellDOM.setAttribute('id',`cell${i}`);
         
-        cellTag.classList.add('d-none');
+        //cellTag.classList.add('d-none');
 
         elementDOM.append(cellDOM);
 
